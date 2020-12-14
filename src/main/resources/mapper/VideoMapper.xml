@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hbx.itzy.mapper.VideoMapper">
+    <resultMap id="VideoMap" type="com.hbx.itzy.model.Video">
+        <result column="VIDEO_ID" property="videoId"></result>
+        <result column="USER_ID" property="userId"></result>
+        <result column="VIDEO_NAME" property="videoName"></result>
+        <result column="VIDEO_TYPE" property="videoType"></result>
+        <result column="VIDEO_TIME" property="videoTime"></result>
+    </resultMap>
+
+    <select id="getVideoById" parameterType="int" resultMap="VideoMap">
+        select * from video where VIDEO_ID=#{id}
+    </select>
+
+    <insert id="addVideo" parameterType="com.hbx.itzy.model.Video">
+        insert into video (VIDEO_ID, USER_ID, VIDEO_NAME, VIDEO_TYPE, VIDEO_TIME)
+        VALUES (#{videoId}, #{userId}, #{videoName}, #{videoType}, #{videoTime})
+    </insert>
+
+
+</mapper>
